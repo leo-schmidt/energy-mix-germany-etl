@@ -1,6 +1,6 @@
 import requests
 import pandas as pd
-from convert_timestamp import convert_timestamp_to_date
+from smard.etl.convert_timestamp import convert_timestamp_to_date
 
 # create dictionary of filters as defined on https://smard.api.bund.dev/
 # each filter corresponds to one possible parameter
