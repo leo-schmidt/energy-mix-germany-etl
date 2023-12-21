@@ -2,6 +2,7 @@ test_data.csv
 notes.txt
 notebook/
 linux.txt
+.envrc
 
 
 ######### FROM TEMPLATE ########
