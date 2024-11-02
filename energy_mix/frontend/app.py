@@ -2,8 +2,8 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import plotly.graph_objects as go
-from energy_mix_germany.smard_api.get_s3_data import get_s3_data
-from energy_mix_germany.params import *
+from energy_mix.smard_api.get_s3_data import get_s3_data
+from energy_mix.params import *
 
 st.set_page_config(
     page_title="Energy mix Germany ETL", page_icon=":high_voltage:", layout="wide"
