@@ -17,7 +17,7 @@ def convert_date_to_timestamp(
     milliseconds=True,
 ):
     date_object = datetime.strptime(date, dt_format)
-    unix_timestamp = str(int(date_object.timestamp()))
+    unix_timestamp = int(date_object.timestamp())
     if milliseconds:
         unix_timestamp *= 1000
-    return unix_timestamp
+    return str(unix_timestamp)
