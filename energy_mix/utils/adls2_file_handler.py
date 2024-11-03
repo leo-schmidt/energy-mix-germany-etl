@@ -27,3 +27,13 @@ class ADLS2FileHandler:
         file_path = f"{timestamp_dt.year}/{timestamp_dt.month}/{timestamp_dt.date()}_{file_name}.parquet"
         file_client = directory_client.get_file_client(file=file_path)
         file_client.upload_data(buffer, overwrite=True)
+
+    def get_file_system_client(self, file_system: str):
+        return self.adls2.adls2_client.get_file_system_client(file_system)
+
+    def download_bytes(self, file_system, file_path):
+        fs_client = self.get_file_system_client(file_system)
+        file_client = fs_client.get_file_client(file_path)
+        download = file_client.download_file().readall()
+        download_bytes = BytesIO(download)
+        return download_bytes
