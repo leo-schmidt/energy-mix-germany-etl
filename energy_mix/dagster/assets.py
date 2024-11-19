@@ -82,7 +82,7 @@ def energy_mix_merged_data(context: AssetExecutionContext, adls2: ADLS2Resource)
 
 
 @asset(partitions_def=weekly_partition, deps=["energy_mix_merged_data"])
-def energy_mix_staging_table(
+def energy_mix_raw_table(
     context: AssetExecutionContext,
     adls2: ADLS2Resource,
     db: PostgresResource,
@@ -104,7 +104,7 @@ def energy_mix_staging_table(
             df = pd.read_csv(download_bytes)
 
     df.to_sql(
-        name="staging",
+        name="raw",
         con=db.create_engine(),
         if_exists="append",
         schema="public",

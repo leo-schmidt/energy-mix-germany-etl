@@ -1,0 +1,8 @@
+
+version: 2
+
+models:
+  - name: prod
+    description: "Production table for visualization"
+  - name: staging
+    description: "Staging table with sums"
