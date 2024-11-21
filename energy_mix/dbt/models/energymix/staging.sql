@@ -1,4 +1,5 @@
 {{ config(materialized='table') }}
+depends_on: {{ source('dagster','raw') }}
 select
   "Datetime" as "datetime",
   market_price_germany_luxembourg,

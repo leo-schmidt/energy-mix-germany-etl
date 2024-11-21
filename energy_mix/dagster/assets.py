@@ -1,6 +1,9 @@
 from datetime import datetime
+from pathlib import Path
 from dagster import AssetExecutionContext, WeeklyPartitionsDefinition, asset
 from dagster_azure.adls2 import ADLS2Resource
+from dagster_dbt import DbtCliResource, dbt_assets
+import dagster_dbt
 import pandas as pd
 from energy_mix import params
 from energy_mix.dagster.resources import PostgresResource
@@ -110,3 +113,8 @@ def energy_mix_raw_table(
         schema="public",
         index=False,
     )
+
+
+@dbt_assets(manifest=Path("energy_mix/dbt/target/manifest.json"))
+def dbt_project_assets(context: AssetExecutionContext, dbt: DbtCliResource):
+    yield from dbt.cli(["build"], context=context).stream()

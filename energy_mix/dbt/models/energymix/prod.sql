@@ -13,4 +13,4 @@ select
   production_total,
   round((( production_wind_and_photovoltaics + production_other_renewables) / production_total)::numeric, 4) as production_renewables_proportion,
   round((production_conventionals / production_total)::numeric, 4) as production_conventionals_proportion
-from staging
+from {{ ref('staging') }}

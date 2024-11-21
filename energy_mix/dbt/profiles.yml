@@ -1,0 +1,11 @@
+energymix:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      schema: public
+      database: "{{ env_var('PGDATABASE') }}"
+      host: "{{ env_var('PGHOST') }}"
+      user: "{{ env_var('PGUSER') }}"
+      password: "{{ env_var('PGPASSWORD') }}"
+      port: "{{ env_var('PGPORT') | int }}"

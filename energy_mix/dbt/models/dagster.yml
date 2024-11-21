@@ -1,0 +1,7 @@
+sources:
+  - name: dagster
+    tables:
+      - name: raw
+        meta:
+          dagster:
+            asset_key: ["energy_mix_raw_table"]
