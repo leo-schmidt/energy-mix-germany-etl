@@ -4,13 +4,13 @@ from dagster_dbt import DbtCliResource, DbtProject
 from pathlib import Path
 
 from energy_mix import params
-from energy_mix.dagster.resources import PostgresResource
+from energy_mix.resources import PostgresResource
 
 from . import assets  # noqa: TID252
 
 
 dbt_project = DbtProject(
-    project_dir=Path(__file__).joinpath("..", "..", "dbt").resolve(),
+    project_dir=Path(__file__).joinpath("..", "dbt").resolve(),
     # packaged_project_dir=Path(__file__).joinpath("dbt-project").resolve(),
 )
 dbt_project.prepare_if_dev()

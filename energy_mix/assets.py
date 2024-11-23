@@ -3,10 +3,9 @@ from pathlib import Path
 from dagster import AssetExecutionContext, WeeklyPartitionsDefinition, asset
 from dagster_azure.adls2 import ADLS2Resource
 from dagster_dbt import DbtCliResource, dbt_assets
-import dagster_dbt
 import pandas as pd
 from energy_mix import params
-from energy_mix.dagster.resources import PostgresResource
+from energy_mix.resources import PostgresResource
 from energy_mix.smard_api.smard_api_connector import SmardAPIConnector
 from energy_mix.utils.adls2_file_handler import ADLS2FileHandler
 from energy_mix.utils.convert_timestamp import convert_date_to_timestamp
