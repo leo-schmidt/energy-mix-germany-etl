@@ -20,5 +20,5 @@ requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [tool.dagster]
-module_name = "energy_mix.dagster.definitions"
+module_name = "energy_mix.definitions"
 code_location_name = "energy_mix"

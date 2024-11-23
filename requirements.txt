@@ -1,0 +1,6 @@
+dagster==1.9.0
+dagster-azure==0.25.0
+dagster-dbt==0.25.0
+dagster-webserver==1.9.0
+numpy==1.23.4
+pandas==1.4.4

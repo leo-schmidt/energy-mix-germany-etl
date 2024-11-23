@@ -1,0 +1,26 @@
+services:
+  db:
+    image: postgres:15
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=postgres
+    volumes:
+      - "./data:/var/lib/postgresql/data:rw"
+    ports:
+      - "5432:5432"
+  dagster:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - STORAGE_ACCOUNT=${STORAGE_ACCOUNT}
+      - PGHOST=${PGHOST}
+      - PGPORT=${PGPORT}
+      - PGDATABASE=${PGDATABASE}
+      - PGUSER=${PGUSER}
+      - PGPASSWORD=${PGPASSWORD}
+    ports:
+      - "3000:3000"
+    # volumes:
+    #   - ./data:/opt/dagster/dagster_home/data
