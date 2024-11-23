@@ -1,5 +1,4 @@
-{{ config(materialized='table') }}
-depends_on: {{ source('dagster','raw') }}
+{{ config(materialized='incremental') }}
 select
   "Datetime" as "datetime",
   market_price_germany_luxembourg,
@@ -38,3 +37,8 @@ select
   + production_wind_offshore
   ) as production_total
 from raw
+{% if is_incremental() %}
+
+where "Datetime" > (select coalesce(max("datetime"),'1900-01-01 00:00:00.000') from {{ this }} )
+
+{% endif %}

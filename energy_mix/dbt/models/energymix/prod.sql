@@ -1,4 +1,4 @@
-{{ config(materialized='table') }}
+{{ config(materialized='incremental') }}
 select
   datetime,
   market_price_germany_luxembourg,
@@ -14,3 +14,8 @@ select
   round((( production_wind_and_photovoltaics + production_other_renewables) / production_total)::numeric, 4) as production_renewables_proportion,
   round((production_conventionals / production_total)::numeric, 4) as production_conventionals_proportion
 from {{ ref('staging') }}
+{% if is_incremental() %}
+
+where "datetime" > (select coalesce(max("datetime"),'1900-01-01 00:00:00.000') from {{ this }} )
+
+{% endif %}
